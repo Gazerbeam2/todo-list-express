@@ -1,24 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">  <!---Attribute tag that lets you know which language its written in-->
 <head> <!---HTML head tag where all the metadata goes.s-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document</title> <!--This signfiys the title of the Document which is useful for SEO and accessibility reasons. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Todo List: </h1>
+    <link rel="stylesheet" href="css/style.css"> <!---This links our stylesheet to the HTML-->
+</head> <!---Closing HTML head tag-->
+<body> <!--THis is the opening body tag where all the content goes -->
+    <h1>Todo List: </h1> <!--This is H1 header tag called Todo List-->
     <ul class="todoItems">
     <% for(let i=0; i < items.length; i++) {%>
         <li class="item">
@@ -34,7 +25,7 @@
 
     <h2>Left to do: <%= left %></h2>
 
-    <h2>Add A Todo:</h2>
+    <h2>Add A Todo:</h2> <!---H2 tag which says Add a todo-->
 
     <form action="/addTodo" method="POST">
         <input type="text" placeholder="Thing To Do" name="todoItem">
@@ -42,6 +33,6 @@
     </form>
 
 
-    <script src='js/main.js'></script>
+    <script src='js/main.js'></script> <!---This is a script tag that will allow us to use our js file on our site-->
 </body>
 </html>

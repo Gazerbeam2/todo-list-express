@@ -1,5 +1,5 @@
-const express = require('express')
-const app = express()
+const express = require('express') //This variable that allows us to use the express module
+const app = express() //This is a variable that allows us to
 const MongoClient = require('mongodb').MongoClient
 const PORT = 2121
 require('dotenv').config()
@@ -14,7 +14,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
     })
-    
+
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
