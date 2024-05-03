@@ -1,7 +1,7 @@
 const express = require('express') //This variable that allows us to use the express module
 const app = express() //This is a variable that allows us to
 const MongoClient = require('mongodb').MongoClient
-const PORT = 2121
+const PORT = 2121 //This is the port will be using for this app
 require('dotenv').config()
 
 
