@@ -1,6 +1,6 @@
 const express = require('express') //This variable that allows us to use the express module
-const app = express() //This is a variable that allows us to
-const MongoClient = require('mongodb').MongoClient
+const app = express() //This is a variable that allows us to use express as a method. 
+const MongoClient = require('mongodb').MongoClient //This variable set ups MongoDB allows us to use MongoDB in the code 
 const PORT = 2121 //This is the port will be using for this app
 require('dotenv').config()
 
@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 
-app.get('/',async (request, response)=>{
+app.get('/',async (request, response)=>{ 
     const todoItems = await db.collection('todos').find().toArray()
     const itemsLeft = await db.collection('todos').countDocuments({completed: false})
     response.render('index.ejs', { items: todoItems, left: itemsLeft })
@@ -78,7 +78,7 @@ app.put('/markUnComplete', (request, response) => {
 
 })
 
-app.delete('/deleteItem', (request, response) => {
+app.delete('/deleteItem', (request, response) => { //
     db.collection('todos').deleteOne({thing: request.body.itemFromJS})
     .then(result => {
         console.log('Todo Deleted')
