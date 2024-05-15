@@ -11,18 +11,18 @@ let db,
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
-        console.log(`Connected to ${dbName} Database`)
+        console.log(`Connected to ${dbName} Database`) //This sends a message to the console that it's connected to the Database
         db = client.db(dbName)
     })
 
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs') //
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 
-app.get('/',async (request, response)=>{ 
-    const todoItems = await db.collection('todos').find().toArray()
+app.get('/',async (request, response)=>{ //The app will send a get request from the '/'(requested endpoint) and waits for a response.
+    const todoItems = await db.collection('todos').find().toArray() 
     const itemsLeft = await db.collection('todos').countDocuments({completed: false})
     response.render('index.ejs', { items: todoItems, left: itemsLeft })
     // db.collection('todos').find().toArray()
@@ -81,13 +81,13 @@ app.put('/markUnComplete', (request, response) => {
 app.delete('/deleteItem', (request, response) => { //
     db.collection('todos').deleteOne({thing: request.body.itemFromJS})
     .then(result => {
-        console.log('Todo Deleted')
+        console.log('Todo Deleted') //This sends a message to the console that the item was deleted
         response.json('Todo Deleted')
     })
-    .catch(error => console.error(error))
+    .catch(error => console.error(error)) //This reports any error to the console. 
 
 })
 
-app.listen(process.env.PORT || PORT, ()=>{
-    console.log(`Server running on port ${PORT}`)
+app.listen(process.env.PORT || PORT, ()=>{ //This tells the app that we want to listen for a specific port.
+    console.log(`Server running on port ${PORT}`) //This sends a message to console so we know that the server is running and what port the server is running on. 
 })
