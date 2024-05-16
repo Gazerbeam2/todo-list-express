@@ -16,9 +16,9 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     })
 
 app.set('view engine', 'ejs') //
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(express.static('public')) //
+app.use(express.urlencoded({ extended: true })) //
+app.use(express.json()) //
 
 
 app.get('/',async (request, response)=>{ //The app will send a get request from the '/'(requested endpoint) and waits for a response.
@@ -35,13 +35,13 @@ app.get('/',async (request, response)=>{ //The app will send a get request from 
     // .catch(error => console.error(error))
 })
 
-app.post('/addTodo', (request, response) => {
+app.post('/addTodo', (request, response) => { //This method sends a post request to the server, /addTodo is the path 
     db.collection('todos').insertOne({thing: request.body.todoItem, completed: false})
     .then(result => {
-        console.log('Todo Added')
-        response.redirect('/')
+        console.log('Todo Added') //
+        response.redirect('/') //This refereshes the page so it can update. 
     })
-    .catch(error => console.error(error))
+    .catch(error => console.error(error)) //This code catches any error and reports it to the console. 
 })
 
 app.put('/markComplete', (request, response) => {
@@ -54,10 +54,10 @@ app.put('/markComplete', (request, response) => {
         upsert: false
     })
     .then(result => {
-        console.log('Marked Complete')
+        console.log('Marked Complete') //This sends a message to the console that the collection has been updated. 
         response.json('Marked Complete')
     })
-    .catch(error => console.error(error))
+    .catch(error => console.error(error)) //This reports any error to the console. 
 
 })
 
@@ -74,7 +74,7 @@ app.put('/markUnComplete', (request, response) => {
         console.log('Marked Complete')
         response.json('Marked Complete')
     })
-    .catch(error => console.error(error))
+    .catch(error => console.error(error)) //This reports any error to the console. 
 
 })
 
